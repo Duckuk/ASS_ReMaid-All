@@ -78,10 +78,12 @@ pickChoice_5(option) {
 }
 
 endingNewGame(slot := 1, newGame := false) {
+	global xColour
+	global yColour
 	Click, 951, 582
 	;Look for nose on main menu
 	Loop {
-		PixelSearch, xC, yC, 974, 756, 974, 756, 0xBBCFF2, 0, Fast
+		PixelSearch, xColour, yColour, 974, 756, 974, 756, 0xBBCFF2, 0, Fast
 		if (ErrorLevel = 0) {
 			break
 		}
