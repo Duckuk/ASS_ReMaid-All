@@ -21,6 +21,19 @@ timerSplit() {
 	}
 }
 
+waitUntilChoice(fileName, startX:=0, startY:=0, endX:=false, endY:=false) {
+	global FoundX
+	global FoundY
+	endX := !(endX) ? (A_ScreenWidth) : (endX)		;Just an if/else statement for hipsters, they're called 'ternary operators'
+	endY := !(endY) ? (A_ScreenHeight) : (endY)		;Probably not a good idea to use these often as readability suffers quite a bit
+	Loop {
+		ImageSearch, FoundX, FoundY, %startX%, %startY%, %endX%, %endY%, .\ASS_ReMaid-All_resources\%fileName%.png
+		if !(ErrorLevel) {
+			break
+		}
+	}
+}
+
 pickChoice_2(option) {
 	if (option == 1) {
 		Click, 951, 527
@@ -270,872 +283,533 @@ loadGame(slot := 1) {
 	MouseMove, 121, 930
 	Send, {Ctrl down}
 	
+	
 	;PAVING THE WAY
 	
+	
 	;Pick 'Say you're fine.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice1.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("choice1")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Apologize.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("choice2")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Pretend you didn't see her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice3.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("choice3")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Go to class'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\masturbation_choice1.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("masturbation_choice1")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Wait.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice4.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("choice4")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Wait for her to go back to her room.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice5.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("choice5")
+	pickChoice_2(2)
+	
 	
 	;Save and pick 'Excuse yourself.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanachat1_choice2.png
-		if (ErrorLevel = 0) {
-			saveGame(6)
-			pickChoice_5(5)
-			break
-		}
-	}
+	waitUntilChoice("hanachat1_choice2")
+	saveGame(6)
+	pickChoice_5(5)
+	
 	
 	;Pick 'Head into town.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\town-or-home.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("town-or-home")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Apologize and leave.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\town_erika-maid.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("town_erika-maid")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Begin to masturbate.' (It has less dialogue)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("dream_choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\after-dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("after-dream_choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Tell her she's cute.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\walking-home_erika_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("walking-home_erika_choice")
+	pickChoice_2(1)
+	
 	
 	;GOING FOR THE 'Rapist' ENDING
 	
+	
 	;Save and pick 'Ask her if she wants to sit down and have a drink.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\walked-home_choice.png
-		if (ErrorLevel = 0) {
-			saveGame(1)
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("walked-home_choice")
+	saveGame(1)
+	pickChoice_3(3)
+	
 	
 	;Pick 'Make fun of her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice1.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice1")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Help her undress.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(4)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice2")
+	pickChoice_4(4)
+	
 	
 	;Pick 'Snap a photo with your phone before you put on her pajamas.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice3.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice3")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Gently lift her leg and have a look.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice4.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice4")
+	pickChoice_2(1)
+	
 	
 	;Save and pick 'Hmmmmm.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice5.png
-		if (ErrorLevel = 0) {
-			saveGame(2)
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice5")
+	saveGame(2)
+	pickChoice_3(3)
+	
 	
 	;Pick 'It's not rape if she doesn't resist.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\rapist_choice6.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("rapist_choice6")
+	pickChoice_2(2)
+	
 	
 	;'Rapist' ENDING DONE (1/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_dark.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(2)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_dark", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(2)
+	
 	
 	;GOING FOR THE '4-Ever Alone' ENDING
+	
 	
 	Send, {Ctrl down}
 	pickChoice_3(2)
 	
+	
 	;Pick 'Say no.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_know-hana.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_know-hana")
+	pickChoice_2(2)
+	
 	
 	;Save and pick 'Disagree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_stick-together.png
-		if (ErrorLevel = 0) {
-			saveGame(7)
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_stick-together")
+	saveGame(7)
+	pickChoice_2(2)
+	
 	
 	;Pick 'Knock on her door.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-knock.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-knock")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Ask her if she's feeling alright.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-reply.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-reply")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Compliment her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-tease.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-tease")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Invite her to the hanami.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-hanami.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-hanami")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Sit down with Erika.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_sit-down.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_sit-down")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Just talk to her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_erika_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(2)
-			break
-		}
-	}
+	waitUntilChoice("hanami_erika_choice")
+	pickChoice_4(2)
+	
 	
 	;Pick 'Say it's been nice.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_hana_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_hana_choice")
+	pickChoice_2(1)
+	
 	
 	;Save and pick 'Stay in your room.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\day7_choice.png
-		if (ErrorLevel = 0) {
-			saveGame(3)
-			pickChoice_4(4)
-			break
-		}
-	}
+	waitUntilChoice("day7_choice")
+	saveGame(3)
+	pickChoice_4(4)
+	
 	
 	;'4-Ever Alone' ENDING DONE (2/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_light.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(3)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_light", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(3)
+	
 	
 	;GOING FOR THE 'Heart Broke' ENDING
 	Send, {Ctrl down}
 	pickChoice_3(3)
 	
+	
 	;Pick 'Agree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_train-sailors.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_train-sailors")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_town-along.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_town-along")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Let her keep the uniform on.' (Easier to censor)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_uniform_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_uniform_choice")
+	pickChoice_2(2)
+	
 	
 	;'Heart Broke' ENDING DONE (3/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_light.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(7)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_light", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(7)
+	
 	
 	;GOING FOR THE 'Kenji' ENDING
+	
 	
 	Send, {Ctrl down}
 	pickChoice_2(1)
 	
+	
 	;Pick 'Accept it.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_hike-invitation.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_hike-invitation")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Let her be.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-knock.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-knock")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Go sit down with Kenji.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_sit-down.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("hanami_sit-down")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Sit for yourself a while longer.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_for-self.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("hanami_for-self")
+	pickChoice_2(2)
+	
 	
 	;Pick 'A couple of rice balls and an energy drink.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_lunch.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hike_lunch")
+	pickChoice_3(1)
+	
 	
 	;Pick '"Nah..."'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_hana_rich-kid.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("hike_hana_rich-kid")
+	pickChoice_3(3)
+	
 	
 	;Pick 'Air.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_hana_live-without.png
-		if (ErrorLevel = 0) {
-			Click, 951, 216
-			break
-		}
-	}
+	waitUntilChoice("hike_hana_live-without")
+	Click, 951, 216
+	MouseMove, 121, 930
+	
 	
 	;'Kenji' ENDING DONE (4/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_kenjah.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(1)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_kenjah", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(1)
+	
 	
 	;GOING FOR THE 'Erika' ENDING
+	
 	
 	Send, {Ctrl down}
 	pickChoice_3(1)
 	
+	
 	;Pick 'Say no.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_know-hana.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_know-hana")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Disagree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_stick-together.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_stick-together")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Go sit with her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_sit-with.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_sit-with")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Tell her you enjoyed studying together.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_sitting-with.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_sitting-with")
+	pickChoice_4(1)
+	
 	
 	;Pick 'Knock on her door.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-knock.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-knock")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Ask her if you can come in.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-reply_2.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-reply_2")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Compliment her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-tease.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-tease")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Invite her to the hanami.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-hanami.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-hanami")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Sit down with Erika.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_sit-down.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_sit-down")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Just talk to her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_erika_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(2)
-			break
-		}
-	}
+	waitUntilChoice("hanami_erika_choice")
+	pickChoice_4(2)
+	
 	
 	;Pick 'Say it's been nice.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_hana_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_hana_choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Check with Erika if she's up for something.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\day7_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(3)
-			break
-		}
-	}
+	waitUntilChoice("day7_choice")
+	pickChoice_4(3)
+	
 	
 	;Pick 'Agree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_train-sailors.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("erika_train-sailors")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_town-along.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_town-along")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Let her keep the uniform on.' (Easier to censor)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_uniform_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_uniform_choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'I came in Erika's mouth.' (Easier to censor)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika-hana_blowie.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("erika-hana_blowie")
+	pickChoice_2(1)
+	
 	
 	;'Erika' ENDING DONE (5/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_erika.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(6)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_erika", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(6)
+	
 	
 	;GOING FOR THE 'Hana' ENDING
 	
+	
 	Send, {Ctrl down}
+	
 	
 	;Pick 'Tell her you just moved in with a girl.'
 	pickChoice_5(3)
 	
+	
 	;Pick 'Tell her she is not your type.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanachat1_erika-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("hanachat1_erika-choice")
+	pickChoice_3(3)
+	
 	
 	;Pick 'Go for it.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanachat1_dinner-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanachat1_dinner-choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Order the eggplant pasta.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-dinner_food-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_food-choice")
+	pickChoice_3(3)
+	
 	
 	;Pick 'Tell her you like it.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-dinner_class-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_class-choice")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Tell her about Erika.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-dinner_erika-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_erika-choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Lie and say you do.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-dinner_sport-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_sport-choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'The flute.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-dinner_sport-choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_5(5)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_sport-choice2")
+	pickChoice_5(5)
+	
 	
 	;Pick 'Go dutch.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 494, 384, 1479, 705, .\ASS_ReMaid-All_resources\hana-dinner_payment-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("hana-dinner_payment-choice", 494, 384, 1479, 705)
+	pickChoice_3(2)
+	
 	
 	;Pick 'Go to sleep.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 494, 384, 1479, 705, .\ASS_ReMaid-All_resources\erika_snoop.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_snoop", 494, 384, 1479, 705)
+	pickChoice_2(2)
+	
 	
 	;Pick 'Begin to masturbate.' (It has less dialogue)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("dream_choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\after-dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("after-dream_choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Agree to go.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana_town-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hana_town-choice")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Go for it.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-town_drink-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hana-town_drink-choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Cum.' (Other option doesn't progress the game)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana-town_sex-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hana-town_sex-choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Say yes.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_know-hana2.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("kenji_know-hana2")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Agree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_stick-together2.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("kenji_stick-together2")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Accept it.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_hike-invitation2.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("kenji_hike-invitation2")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Go sit by yourself.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_sit-with.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_sit-with")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Let her be.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-knock.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-knock")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Go sit down with Hana.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_sit-down.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_sit-down")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Say it's been nice.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_hana_choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_hana_choice2")
+	pickChoice_4(1)
+	
 	
 	;Pick 'Invite her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_hana_invite-hike.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_hana_invite-hike")
+	pickChoice_2(1)
+	
 	
 	;Pick 'A couple of rice balls and an energy drink.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_lunch.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("hike_lunch")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Tease her, lightly.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_hana_rich-kid.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("hike_hana_rich-kid")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Cat pictures.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_hana_live-without.png
-		if (ErrorLevel = 0) {
-			Click, 947, 757
-			MouseMove, 121, 930
-			break
-		}
-	}
+	waitUntilChoice("hike_hana_live-without")
+	Click, 947, 757
+	MouseMove, 121, 930
+	
 	
 	;Pick 'Heaps of money.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hike_hana_live-without2.png
-		if (ErrorLevel = 0) {
-			Click, 957, 754
-			MouseMove, 121, 930
-			break
-		}
-	}
+	waitUntilChoice("hike_hana_live-without2")
+	Click, 957, 754
+	MouseMove, 121, 930
+	
 	
 	;Pick 'Cum.' (Other option doesn't progress the game)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana_sex-choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hana_sex-choice")
+	pickChoice_2(1)
 	
-	;Pick 'Take her in the ass.' (See 'analanal.webm')
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana_sex-choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	
+	;Pick 'Take her in the ass.' (See supplementary video)
+	waitUntilChoice("hana_sex-choice2")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Come inside of her.' (Other option doesn't progress the game)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hana_sex-choice3.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hana_sex-choice3")
+	pickChoice_2(1)
+	
 	
 	;'Hana' ENDING DONE (6/7)
 	
+	
 	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_hana.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			endingNewGame(1, true)
-			break
-		}
-	}
+	waitUntilChoice("ending-screen_hana", 400, 304, 1584, 542)
+	timerSplit()
+	endingNewGame(1, true)
+	
 	
 	;GOING FOR THE 'Bomb' ENDING
+	
 	
 	Send, {Ctrl up}
 	
@@ -1157,233 +831,135 @@ loadGame(slot := 1) {
 	
 	Send, {Ctrl down}
 	
+	
 	;Pick 'Say you're fine.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice1.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("choice1")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Apologize.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice2.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("choice2")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Pretend you didn't see her.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice3.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("choice3")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Go to class.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\masturbation_choice1.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("masturbation_choice1")
+	pickChoice_2(2)
+	
 	
 	;Pick 'You've waited enough already.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\choice4.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("choice4")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\shower_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("shower_choice")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Say it's an explosion of new impressions.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanachat1_choice2_bomb.png
-		if (ErrorLevel = 0) {
-			Click, 968, 597
-			MouseMove, 121, 930
-			break
-		}
-	}
+	waitUntilChoice("hanachat1_choice2_bomb")
+	Click, 968, 597
+	MouseMove, 121, 930
+	
 	
 	;Pick 'Make an excuse.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanachat1_dinner-choice_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("hanachat1_dinner-choice_bomb")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Head into town.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\town-or-home.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("town-or-home")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Apologize and leave.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\town_erika-maid.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("town_erika-maid")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Begin to masturbate.' (It has less dialogue)
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("dream_choice")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Don't.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\after-dream_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("after-dream_choice")
+	pickChoice_2(2)
 	
-	;Pick 'Tell her she's cute.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\walking-home_erika_choice_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(3)
-			break
-		}
-	}
+	
+	;Pick 'Yell "bomb!"'
+	waitUntilChoice("walking-home_erika_choice_bomb")
+	pickChoice_3(3)
+	
 	
 	;Pick 'Let her go.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\walked-home_choice_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(2)
-			break
-		}
-	}
+	waitUntilChoice("walked-home_choice_bomb")
+	pickChoice_3(2)
+	
 	
 	;Pick 'Ask him if he's referring to the girl with the big bombs?'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_know-hana_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(3)
-			break
-		}
-	}
+	waitUntilChoice("kenji_know-hana_bomb")
+	pickChoice_3(3)
+	
 	
 	;Pick 'Say yes.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_know-hana.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("kenji_know-hana")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Agree.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_stick-together_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("kenji_stick-together_bomb")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Ask if it's going to be the bomb?'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_hike-invitation_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(4)
-			break
-		}
-	}
+	waitUntilChoice("kenji_hike-invitation_bomb")
+	pickChoice_4(4)
+	
 	
 	;Pick 'Decline the invitation.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\kenji_hike-invitation2_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_3(1)
-			break
-		}
-	}
+	waitUntilChoice("kenji_hike-invitation2_bomb")
+	pickChoice_3(1)
+	
 	
 	;Pick 'Go sit by yourself.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_sit-with.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_sit-with")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Let her be.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\erika_knock-knock.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(2)
-			break
-		}
-	}
+	waitUntilChoice("erika_knock-knock")
+	pickChoice_2(2)
+	
 	
 	;Pick 'Go sit down with Hana'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_sit-down_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_sit-down_bomb")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Say it's been nice.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\hanami_hana_choice_bomb.png
-		if (ErrorLevel = 0) {
-			pickChoice_2(1)
-			break
-		}
-	}
+	waitUntilChoice("hanami_hana_choice_bomb")
+	pickChoice_2(1)
+	
 	
 	;Pick 'Stay in your room.'
-	Loop {
-		ImageSearch, FoundX, FoundY, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, .\ASS_ReMaid-All_resources\day7_choice.png
-		if (ErrorLevel = 0) {
-			pickChoice_4(4)
-			break
-		}
-	}
+	waitUntilChoice("day7_choice")
+	pickChoice_4(4)
+	
 	
 	;'Bomb' ENDING DONE (7/7)
 	
-	;Go back to main menu from ending screen
-	Loop {
-		ImageSearch, FoundX, FoundY, 400, 304, 1584, 542, .\ASS_ReMaid-All_resources\ending-screen_bomb.png
-		if (ErrorLevel = 0) {
-			timerSplit()
-			break
-		}
-	}
+	
+	;Stop timer on ending screen
+	waitUntilChoice("ending-screen_bomb", 400, 304, 1584, 542)
+	timerSplit()
+	
 	
 	Send, {Ctrl up}
 	ExitApp
